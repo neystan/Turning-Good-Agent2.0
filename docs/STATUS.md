@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-26。本文只记当前进度、待办和等待决定的问题；已经定下的事见 [DECISIONS.md](./DECISIONS.md)。
+最后更新：2026-10-27。本文只记当前进度、待办和等待决定的问题；已经定下的事见 [DECISIONS.md](./DECISIONS.md)。
 
 ## 当前阶段
 
@@ -24,20 +24,21 @@ M1 之后各步骤的顺序和内容会在 M1 完成后重新确认。
 
 阻塞 M1：
 
-1. 插件系统的具体设计：内核与插件的边界、首批开放哪些扩展点、是否采用 `pluggy`。需要先研究 Pi、Hermes、DeepSeek harness。
-2. 第一个接入渠道：先接飞书机器人，还是先做网页界面。
-3. Python 工具链：依赖管理（如 uv）、测试框架（如 pytest）、最低 Python 版本。
-4. 存储：MVP 直接用 PostgreSQL，还是先用更轻的方案。
-5. 代码包名，例如 `tga2`。
+1. 插件系统的具体设计：内核与插件的边界、首批开放哪些扩展点、是否采用 `pluggy`。调研初稿见 [research/agent-harness-survey.md](./research/agent-harness-survey.md)。
+2. 上下文"每轮按当前状态重新组装"与 prompt cache 的冲突：调研中 dsh、Pi、Hermes 都把稳定的缓存前缀当作硬约束，OpenHands 则接受定期破坏缓存。需要决定上下文如何划分稳定前缀和每轮重组的部分。
+3. 第一个接入渠道：先接飞书机器人，还是先做网页界面。
+4. Python 工具链：依赖管理（如 uv）、测试框架（如 pytest）、最低 Python 版本。
+5. 存储：MVP 直接用 PostgreSQL，还是先用更轻的方案。
+6. 代码包名，例如 `tga2`。
 
 不着急：
 
-6. 手机端的长期方案：自建 App，还是继续使用 IM 渠道。
-7. 何时从本地运行切换到云服务器。
+7. 手机端的长期方案：自建 App，还是继续使用 IM 渠道。
+8. 何时从本地运行切换到云服务器。
 
 ## 待办
 
 1. 确定维护文档（AGENTS.md、CLAUDE.md、docs/REVIEW.md、docs/STATUS.md、docs/DECISIONS.md）。
-2. 研究 Pi、Hermes、DeepSeek harness 的内核与插件设计，和所有者讨论插件系统。
+2. 和所有者讨论调研初稿（Pi、Hermes、DeepSeek harness 已初读，另含 Letta、Graphiti、mem0、OpenHands、Codex CLI 的特色），据此确定插件系统和上下文组装方案。
 3. 写规格（`docs/SPEC.md`）和架构说明（`docs/ARCHITECTURE.md`）的初版。
 4. 写 M1 的阶段文档。
