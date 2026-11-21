@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-31。本文只记当前进度、待办和等待决定的问题；已经定下的事见 [DECISIONS.md](./DECISIONS.md)。
+最后更新：2026-11-21。本文只记当前进度、待办和等待决定的问题；已经定下的事见 [DECISIONS.md](./DECISIONS.md)。
 
 ## 当前阶段
 
@@ -24,10 +24,10 @@ M1 之后各步骤的顺序和内容会在 M1 完成后重新确认。
 
 阻塞 M1：
 
-1. 插件系统的具体设计：内核与插件的边界、首批开放哪些扩展点、是否采用 `pluggy`。调研初稿见 [research/agent-harness-survey.md](./research/agent-harness-survey.md)。
+1. 插件系统的具体设计：内核与插件的边界、首批开放哪些扩展点、如何利用 pi-durable 的 Extension 与 Registry。调研初稿见 [research/agent-harness-survey.md](./research/agent-harness-survey.md)。
 2. 上下文"每轮按当前状态重新组装"与 prompt cache 的冲突：调研中 dsh、Pi、Hermes 都把稳定的缓存前缀当作硬约束，OpenHands 则接受定期破坏缓存。需要决定上下文如何划分稳定前缀和每轮重组的部分。另外，系统内部暂定为多个相互独立的上下文（见 DECISIONS.md 2026-10-31），还需要决定如何划分它们，以及它们之间是否联系、如何联系。
 3. 第一个接入渠道：先接飞书机器人，还是先做网页界面。
-4. Python 工具链：依赖管理（如 uv）、测试框架（如 pytest）、最低 Python 版本。
+4. TypeScript 工具链：包管理器（如 npm）、测试框架（如 vitest）、代码检查（如 biome）、最低 Node 版本，以及固定使用的 pi-durable 版本。
 5. 存储：MVP 直接用 PostgreSQL，还是先用更轻的方案。
 6. 代码包名，例如 `tga2`。
 

@@ -58,3 +58,9 @@ runtime 是常驻服务，部署在所有者租用的云服务器上，初期可
 M1 的验证方式增加一项：交替聊多个话题时，旧话题不混入回答，切回旧话题能接上。
 
 理由：这是单一会话体验能否成立的关键，越早发现问题，改动成本越低。代价是 M1 要多准备一组虚构的测试对话。
+
+## 2026-11-21 改用 TypeScript
+
+开发语言从 Python 改为 TypeScript，取代 2026-10-25"技术选型"中的语言一项；模型仍用 DeepSeek。
+
+理由：所有者打算以 pi-durable 为基础构建内核，它是 TypeScript 实现，所有条目即时持久化、崩溃后可恢复，适合 24 小时常驻的 personal agent；作为外围参考的 DeepSeek Super-Agent 及其所在的 DeepSeek Harness 生态也是 TypeScript。继续用 Python 只能借鉴这些设计、自行重写，工作量和风险都更大。
